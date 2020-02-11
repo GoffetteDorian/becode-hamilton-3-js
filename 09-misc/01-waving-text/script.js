@@ -40,21 +40,12 @@
     }
   };
 
-  //Loop to animate the text
-  let stop = false;
-  const retry = () => {
-    if (!stop) {
-      animate();
-      setTimeout(retry, 150);
-    }
-  };
-
   //Trigger animation on mouseenter and stop it on mouseleave
+  let interval;
   str.onmouseenter = () => {
-    stop = false;
-    retry();
+    interval = setInterval(animate, 150);
   };
   str.onmouseleave = () => {
-    stop = true;
+    clearInterval(interval);
   };
 })();
